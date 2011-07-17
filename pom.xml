@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+						http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>JFsmCore</groupId>
+	<artifactId>JFsmCore</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>JFsmCore</name>
+	<packaging>jar</packaging>
+	<description>The core JFsm library</description>
+
+	<build>
+		<defaultGoal>jfsm.jar</defaultGoal>
+		<outputDirectory>target/main/classes</outputDirectory>
+		<testOutputDirectory>target/test/classes</testOutputDirectory>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+		</dependency>
+	</dependencies>
+
+</project>
