@@ -1,8 +1,8 @@
-package org.jfsm.basic.test.events;
+package org.jfsm.core.test.events;
 
 import java.beans.PropertyChangeEvent;
 
-import org.jfsm.basic.GuardAdapter;
+import org.jfsm.core.GuardAdapter;
 
 /**
  * A guard condition for 'greater than'. The constructor supplies the limit value, and the event from the

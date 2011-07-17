@@ -8,8 +8,8 @@ import org.jfsm.ActionI;
 import org.jfsm.JFsmException;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
-import org.jfsm.basic.JFsmTimerTask;
-import org.jfsm.basic.Transition;
+import org.jfsm.core.JFsmTimerTask;
+import org.jfsm.core.Transition;
 import org.jfsm.events.FsmPropertyChangeEvent;
 import org.jfsm.events.TimerEvent;
 

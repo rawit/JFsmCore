@@ -1,7 +1,7 @@
 package org.jfsm.guards;
 
 import org.jfsm.GuardConditionI;
-import org.jfsm.basic.GuardAdapter;
+import org.jfsm.core.GuardAdapter;
 
 /**
  * Adapter for a logical 'and' construct.

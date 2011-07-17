@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import java.beans.ExceptionListener;
 import java.beans.XMLDecoder;

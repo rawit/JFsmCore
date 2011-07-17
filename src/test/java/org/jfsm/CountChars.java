@@ -1,6 +1,6 @@
 package org.jfsm;
 
-import org.jfsm.basic.ActionAdapter;
+import org.jfsm.core.ActionAdapter;
 
 public class CountChars extends ActionAdapter {
 

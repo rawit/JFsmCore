@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 /**
  * The Entry event type.

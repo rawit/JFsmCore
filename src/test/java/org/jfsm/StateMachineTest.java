@@ -1,8 +1,8 @@
 package org.jfsm;
 
-import org.jfsm.basic.GuardAdapter;
-import org.jfsm.basic.JFsmModel;
-import org.jfsm.basic.State;
+import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.JFsmModel;
+import org.jfsm.core.State;
 import org.jfsm.events.Event;
 import org.jfsm.fsm.JFsm;
 import org.jfsm.guards.IsChar;

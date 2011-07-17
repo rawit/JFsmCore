@@ -1,11 +1,11 @@
-package org.jfsm.basic.test.guards;
+package org.jfsm.core.test.guards;
 
 import junit.framework.Assert;
 
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
-import org.jfsm.basic.JFsmModel;
-import org.jfsm.basic.State;
+import org.jfsm.core.JFsmModel;
+import org.jfsm.core.State;
 import org.jfsm.events.Event;
 import org.jfsm.fsm.JFsm;
 import org.jfsm.guards.IsChar;

@@ -1,6 +1,6 @@
 package org.jfsm.events;
 
-import org.jfsm.basic.JFsmTimerTask;
+import org.jfsm.core.JFsmTimerTask;
 
 /**
  * The timer event.

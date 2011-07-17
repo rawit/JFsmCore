@@ -1,6 +1,6 @@
 package org.jfsm.events;
 
-import org.jfsm.basic.JFsmUtilities;
+import org.jfsm.core.JFsmUtilities;
 
 /**
  * Models the Timer event for repeated fixed-delay execution, beginning at the specified time.

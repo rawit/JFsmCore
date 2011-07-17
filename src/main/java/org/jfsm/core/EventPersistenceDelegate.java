@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import java.beans.DefaultPersistenceDelegate;
 import java.beans.Encoder;

@@ -2,7 +2,7 @@ package org.jfsm.events;
 
 import java.util.Date;
 
-import org.jfsm.basic.JFsmUtilities;
+import org.jfsm.core.JFsmUtilities;
 
 /**
  * Models a Timer event for execution at a specified time.

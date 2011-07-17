@@ -1,11 +1,11 @@
-package org.jfsm.basic.test.events;
+package org.jfsm.core.test.events;
 
 import java.util.Date;
 
-import org.jfsm.basic.ActionAdapter;
-import org.jfsm.basic.GuardAdapter;
-import org.jfsm.basic.JFsmModel;
-import org.jfsm.basic.State;
+import org.jfsm.core.ActionAdapter;
+import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.JFsmModel;
+import org.jfsm.core.State;
 import org.jfsm.events.After;
 import org.jfsm.events.When;
 import org.jfsm.fsm.FsmEventListener;

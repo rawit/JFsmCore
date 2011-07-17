@@ -1,9 +1,9 @@
-package org.jfsm.basic.test;
+package org.jfsm.core.test;
 
 import junit.framework.Assert;
 
-import org.jfsm.basic.State;
-import org.jfsm.basic.Transition;
+import org.jfsm.core.State;
+import org.jfsm.core.Transition;
 import org.junit.Test;
 
 /**

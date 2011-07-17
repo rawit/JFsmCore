@@ -1,9 +1,9 @@
-package org.jfsm.basic.test;
+package org.jfsm.core.test;
 
 import org.jfsm.JFsmException;
 import org.jfsm.StateI;
-import org.jfsm.basic.JFsmModel;
-import org.jfsm.basic.State;
+import org.jfsm.core.JFsmModel;
+import org.jfsm.core.State;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;

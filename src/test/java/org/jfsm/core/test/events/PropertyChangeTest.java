@@ -1,10 +1,10 @@
-package org.jfsm.basic.test.events;
+package org.jfsm.core.test.events;
 
 import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
-import org.jfsm.basic.JFsmModel;
-import org.jfsm.basic.State;
+import org.jfsm.core.JFsmModel;
+import org.jfsm.core.State;
 import org.jfsm.events.FsmPropertyChangeEvent;
 import org.jfsm.fsm.JFsm;
 import org.junit.Assert;

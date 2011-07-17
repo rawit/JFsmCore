@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import java.util.Timer;
 import java.util.TimerTask;

@@ -1,9 +1,9 @@
-package org.jfsm.basic.test;
+package org.jfsm.core.test;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-import org.jfsm.basic.State;
+import org.jfsm.core.State;
 import org.jfsm.fsm.FsmState;
 import org.junit.Test;
 

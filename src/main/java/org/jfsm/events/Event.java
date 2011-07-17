@@ -1,6 +1,6 @@
 package org.jfsm.events;
 
-import org.jfsm.basic.JFsmUtilities;
+import org.jfsm.core.JFsmUtilities;
 
 /**
  * Models an event that the FSM may receive.
@@ -90,7 +90,7 @@ public class Event implements java.io.Serializable {
      */
     public boolean isEntryEvent() {
 
-        if (getType().equals(org.jfsm.basic.Entry.class.getName())) {
+        if (getType().equals(org.jfsm.core.Entry.class.getName())) {
             return true;
         }
 
@@ -104,7 +104,7 @@ public class Event implements java.io.Serializable {
      */
     public boolean isExitEvent() {
 
-        if (getType().equals(org.jfsm.basic.Exit.class.getName())) {
+        if (getType().equals(org.jfsm.core.Exit.class.getName())) {
             return true;
         }
 

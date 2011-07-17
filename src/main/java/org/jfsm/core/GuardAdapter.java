@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import org.jfsm.Context;
 import org.jfsm.GuardConditionI;
@@ -15,7 +15,7 @@ public abstract class GuardAdapter implements GuardConditionI {
      * {@inheritDoc}
      */
     public String getExpression() {
-        return org.jfsm.basic.JFsmUtilities.removePackagePrefix(this.getClass().getName());
+        return org.jfsm.core.JFsmUtilities.removePackagePrefix(this.getClass().getName());
     }
 
     /**

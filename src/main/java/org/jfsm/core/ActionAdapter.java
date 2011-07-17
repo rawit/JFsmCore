@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import org.jfsm.ActionI;
 
@@ -35,7 +35,7 @@ public abstract class ActionAdapter implements ActionI {
      *@return The Expression value
      */
     public String getExpression() {
-        return org.jfsm.basic.JFsmUtilities.removePackagePrefix(this.getClass().getName());
+        return org.jfsm.core.JFsmUtilities.removePackagePrefix(this.getClass().getName());
     }
 
 }

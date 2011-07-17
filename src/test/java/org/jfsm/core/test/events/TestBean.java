@@ -1,4 +1,4 @@
-package org.jfsm.basic.test.events;
+package org.jfsm.core.test.events;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

@@ -1,4 +1,4 @@
-package org.jfsm.basic;
+package org.jfsm.core;
 
 import java.io.Serializable;
 import java.util.ArrayList;

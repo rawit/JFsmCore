@@ -1,6 +1,6 @@
 package org.jfsm.guards;
 
-import org.jfsm.basic.GuardAdapter;
+import org.jfsm.core.GuardAdapter;
 
 /**
  * Adapter checking if a submitted key is a dot (.).
