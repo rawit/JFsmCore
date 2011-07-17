@@ -1,4 +1,4 @@
-package org.jfsm.events;
+package org.jfsm.core.events;
 
 import org.jfsm.core.JFsmUtilities;
 

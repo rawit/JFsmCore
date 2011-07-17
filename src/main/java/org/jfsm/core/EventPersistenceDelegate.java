@@ -4,7 +4,7 @@ import java.beans.DefaultPersistenceDelegate;
 import java.beans.Encoder;
 import java.beans.Expression;
 
-import org.jfsm.events.Event;
+import org.jfsm.core.events.Event;
 
 /**
  * The persistence delegate for the Event class.

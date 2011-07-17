@@ -17,7 +17,7 @@ import org.jfsm.JFsmException;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
-import org.jfsm.events.Event;
+import org.jfsm.core.events.Event;
 
 /**
  * Contains the elements that make up a state machine: - one or more states - a specified start state.

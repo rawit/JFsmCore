@@ -2,9 +2,9 @@ package org.jfsm;
 
 import java.util.List;
 
-import org.jfsm.events.Event;
-import org.jfsm.events.FsmPropertyChangeEvent;
-import org.jfsm.events.TimerEvent;
+import org.jfsm.core.events.Event;
+import org.jfsm.core.events.FsmPropertyChangeEvent;
+import org.jfsm.core.events.TimerEvent;
 
 /**
  * An interface to a state in the finite state machine.

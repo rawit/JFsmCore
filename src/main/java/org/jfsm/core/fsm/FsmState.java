@@ -1,4 +1,4 @@
-package org.jfsm.fsm;
+package org.jfsm.core.fsm;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.jfsm.StateI;
 import org.jfsm.TransitionI;
 import org.jfsm.core.JFsmTimerTask;
 import org.jfsm.core.Transition;
-import org.jfsm.events.FsmPropertyChangeEvent;
-import org.jfsm.events.TimerEvent;
+import org.jfsm.core.events.FsmPropertyChangeEvent;
+import org.jfsm.core.events.TimerEvent;
 
 /**
  * A class to represent a state in the FSM.

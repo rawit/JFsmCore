@@ -1,4 +1,4 @@
-package org.jfsm.fsm;
+package org.jfsm.core.fsm;
 
 import java.util.ArrayList;
 import java.util.HashMap;

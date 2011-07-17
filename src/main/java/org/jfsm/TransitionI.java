@@ -2,7 +2,7 @@ package org.jfsm;
 
 import java.util.List;
 
-import org.jfsm.events.Event;
+import org.jfsm.core.events.Event;
 
 /**
  * Interface for a transition between two states in the state machine. A transitions has attributes for to the two

@@ -1,4 +1,4 @@
-package org.jfsm.guards;
+package org.jfsm.core.guards;
 
 import org.jfsm.core.GuardAdapter;
 

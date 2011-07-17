@@ -5,10 +5,10 @@ import java.util.TimerTask;
 
 import org.apache.log4j.Logger;
 import org.jfsm.JFsmException;
-import org.jfsm.events.After;
-import org.jfsm.events.TimerEvent;
-import org.jfsm.events.When;
-import org.jfsm.fsm.JFsm;
+import org.jfsm.core.events.After;
+import org.jfsm.core.events.TimerEvent;
+import org.jfsm.core.events.When;
+import org.jfsm.core.fsm.JFsm;
 
 /**
  * A timer task that will send the submitted Timer Event to the state machine.

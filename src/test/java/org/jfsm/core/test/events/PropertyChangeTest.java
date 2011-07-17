@@ -5,8 +5,8 @@ import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
 import org.jfsm.core.JFsmModel;
 import org.jfsm.core.State;
-import org.jfsm.events.FsmPropertyChangeEvent;
-import org.jfsm.fsm.JFsm;
+import org.jfsm.core.events.FsmPropertyChangeEvent;
+import org.jfsm.core.fsm.JFsm;
 import org.junit.Assert;
 import org.junit.Test;
 

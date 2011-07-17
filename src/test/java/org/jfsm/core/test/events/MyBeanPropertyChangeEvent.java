@@ -1,6 +1,6 @@
 package org.jfsm.core.test.events;
 
-import org.jfsm.events.FsmPropertyChangeEvent;
+import org.jfsm.core.events.FsmPropertyChangeEvent;
 
 /**
  * Property change event handler for the TestBean class.
