@@ -1,6 +1,6 @@
 package org.jfsm.core.test.events;
 
-import org.jfsm.events.Event;
+import org.jfsm.core.events.Event;
 import org.junit.Assert;
 import org.junit.Test;
 

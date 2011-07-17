@@ -1,4 +1,4 @@
-package org.jfsm.fsm.events;
+package org.jfsm.core.fsm.events;
 
 /**
  * Base class for events that occur in the JFsmEngine.

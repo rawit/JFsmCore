@@ -1,4 +1,4 @@
-package org.jfsm.fsm;
+package org.jfsm.core.fsm;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,12 +9,12 @@ import org.jfsm.Context;
 import org.jfsm.JFsmException;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
-import org.jfsm.fsm.events.FsmError;
-import org.jfsm.fsm.events.FsmEvent;
-import org.jfsm.fsm.events.FsmEventReceived;
-import org.jfsm.fsm.events.FsmEventStateChanged;
-import org.jfsm.fsm.events.FsmFinished;
-import org.jfsm.fsm.events.FsmStarted;
+import org.jfsm.core.fsm.events.FsmError;
+import org.jfsm.core.fsm.events.FsmEvent;
+import org.jfsm.core.fsm.events.FsmEventReceived;
+import org.jfsm.core.fsm.events.FsmEventStateChanged;
+import org.jfsm.core.fsm.events.FsmFinished;
+import org.jfsm.core.fsm.events.FsmStarted;
 
 /**
  * A State Machine implementation. Takes a state machine model (JFsmModelI) and extracts the state and transitions from

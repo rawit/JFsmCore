@@ -1,4 +1,4 @@
-package org.jfsm.fsm.events;
+package org.jfsm.core.fsm.events;
 
 /**
  * JFsmEngine has received an Event. The event may be retrieved using the getEvent() method

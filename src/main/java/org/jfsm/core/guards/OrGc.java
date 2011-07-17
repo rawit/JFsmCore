@@ -1,12 +1,12 @@
-package org.jfsm.guards;
+package org.jfsm.core.guards;
 
 import org.jfsm.GuardConditionI;
 import org.jfsm.core.GuardAdapter;
 
 /**
- * Adapter for a logical 'and' construct.
+ * Adapter for a logical 'or' construct.
  */
-public class AndGc extends GuardAdapter {
+public class OrGc extends GuardAdapter {
 
     private final GuardConditionI gc1;
 
@@ -18,7 +18,7 @@ public class AndGc extends GuardAdapter {
      * @param gc1 first guard condition
      * @param gc2 second guard condition
      */
-    public AndGc(final GuardConditionI gc1, final GuardConditionI gc2) {
+    public OrGc(final GuardConditionI gc1, final GuardConditionI gc2) {
         this.gc1 = gc1;
         this.gc2 = gc2;
     }
@@ -29,7 +29,7 @@ public class AndGc extends GuardAdapter {
      *@return The Expression value
      */
     public String getExpression() {
-        return gc1.getExpression() + " and " + gc2.getExpression();
+        return gc1.getExpression() + " or " + gc2.getExpression();
     }
 
     /**
@@ -39,7 +39,7 @@ public class AndGc extends GuardAdapter {
      *@return true if the button is deselected
      */
     public boolean evaluate(final Object event) {
-        return gc1.evaluate(event) && gc2.evaluate(event);
+        return gc1.evaluate(event) || gc2.evaluate(event);
     }
 
 }

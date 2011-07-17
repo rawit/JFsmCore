@@ -1,10 +1,10 @@
-package org.jfsm.events;
+package org.jfsm.core.events;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 import org.jfsm.JFsmException;
-import org.jfsm.fsm.JFsm;
+import org.jfsm.core.fsm.JFsm;
 
 /**
  * A property change listener event.

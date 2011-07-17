@@ -1,4 +1,4 @@
-package org.jfsm.fsm;
+package org.jfsm.core.fsm;
 
 import org.jfsm.JFsmException;
 import org.jfsm.StateI;

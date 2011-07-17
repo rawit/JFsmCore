@@ -1,6 +1,6 @@
-package org.jfsm.fsm;
+package org.jfsm.core.fsm;
 
-import org.jfsm.fsm.events.FsmEvent;
+import org.jfsm.core.fsm.events.FsmEvent;
 
 /**
  * The JFsmEngine event listener interface. Must be implemented by user classes to receive FSM events.

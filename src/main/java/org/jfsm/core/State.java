@@ -13,10 +13,10 @@ import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmException;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
-import org.jfsm.events.Event;
-import org.jfsm.events.FsmPropertyChangeEvent;
-import org.jfsm.events.TimerEvent;
-import org.jfsm.fsm.JFsm;
+import org.jfsm.core.events.Event;
+import org.jfsm.core.events.FsmPropertyChangeEvent;
+import org.jfsm.core.events.TimerEvent;
+import org.jfsm.core.fsm.JFsm;
 
 /**
  * A class to represent a state in the FSM.

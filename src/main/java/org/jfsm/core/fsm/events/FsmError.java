@@ -1,4 +1,4 @@
-package org.jfsm.fsm.events;
+package org.jfsm.core.fsm.events;
 
 import org.jfsm.JFsmException;
 

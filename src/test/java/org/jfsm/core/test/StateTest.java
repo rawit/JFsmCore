@@ -4,7 +4,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.jfsm.core.State;
-import org.jfsm.fsm.FsmState;
+import org.jfsm.core.fsm.FsmState;
 import org.junit.Test;
 
 /**

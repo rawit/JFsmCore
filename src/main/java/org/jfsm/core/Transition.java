@@ -10,7 +10,7 @@ import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmException;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
-import org.jfsm.events.Event;
+import org.jfsm.core.events.Event;
 
 /**
  * Represents a transition between two states in the state machine.

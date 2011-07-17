@@ -1,4 +1,4 @@
-package org.jfsm.fsm.events;
+package org.jfsm.core.fsm.events;
 
 /**
  * This event is emitted when an action has been executed.
