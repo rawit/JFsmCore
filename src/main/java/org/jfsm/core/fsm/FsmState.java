@@ -18,252 +18,255 @@ import org.jfsm.core.events.TimerEvent;
  */
 public class FsmState implements FsmStateI, Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private final JFsm fsmRef;
+	private final JFsm fsmRef;
 
-    private static final Logger LOGGER = Logger.getLogger(FsmState.class);
+	private static final Logger LOGGER = Logger.getLogger(FsmState.class);
 
-    private StateI state;
+	private final StateI state;
 
-    /**
-     * Creates a new state with a given name.
-     * 
-     * @param id the identifier
-     * @param name The name of the state
-     */
-    public FsmState(StateI state, final JFsm jFsm) {
-        this.state = state;
-        this.fsmRef = jFsm;
-    }
+	/**
+	 * Creates a new state with a given name.
+	 * 
+	 * @param id the identifier
+	 * @param name The name of the state
+	 */
+	public FsmState(StateI state, final JFsm jFsm) {
+		this.state = state;
+		this.fsmRef = jFsm;
+	}
 
-    /**
-     * Input an event to the state.
-     * 
-     *@param event The input event
-     *@return The next state (this, if no transition took place, or this is an accepting state
-     *@throws JFsmException If the event cannot be processed
-     */
-    public int input(final Object event) throws JFsmException {
+	/**
+	 * Input an event to the state.
+	 * 
+	 * @param event The input event
+	 * @return The next state (this, if no transition took place, or this is an
+	 *         accepting state
+	 * @throws JFsmException If the event cannot be processed
+	 */
+	public int input(final Object event) throws JFsmException {
 
-        LOGGER.debug("'" + state.getName() + "': input: event = " + event.getClass().getName());
+		LOGGER.debug("'" + state.getName() + "': input: event = " + event.getClass().getName());
 
-        // Search for match on internal transitions
-        Transition transition = (Transition) findFieringTransition(event, state.getInternalTransitions());
+		// Search for match on internal transitions
+		Transition transition = (Transition) findFieringTransition(event, state.getInternalTransitions());
 
-        if (transition == null) {
-            // Search for match on external transitions
-            transition = (Transition) findFieringTransition(event, state.getExternalTransitions());
-        }
+		if (transition == null) {
+			// Search for match on external transitions
+			transition = (Transition) findFieringTransition(event, state.getExternalTransitions());
+		}
 
-        if (transition == null) {
-            return state.getIdentifier();
-        }
+		if (transition == null) {
+			return state.getIdentifier();
+		}
 
-        final List<ActionI> actions = transition.getActions();
-        if (actions != null && actions.size() > 0) {
-            for (final ActionI action : actions) {
-                if (action != null) {
-                    action.execute(event);
-                    action.setHasBeenExecuted(true);
-                }
-            }
-        }
+		final List<ActionI> actions = transition.getActions();
+		if ((actions != null) && (actions.size() > 0)) {
+			for (final ActionI action : actions) {
+				if (action != null) {
+					action.execute(event);
+					action.setHasBeenExecuted(true);
+				}
+			}
+		}
 
-        return transition.getToStateId();
-    }
+		return transition.getToStateId();
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public int entering(final Object event) throws JFsmException {
+	/**
+	 * {@inheritDoc}
+	 */
+	public int entering(final Object event) throws JFsmException {
 
-        LOGGER.debug("'" + state.getIdentifier() + "': entering: name = " + state.getName());
+		LOGGER.debug("'" + state.getIdentifier() + "': entering: name = " + state.getName());
 
-        startTimerTasks();
-        startPropertyListeners();
+		startTimerTasks();
+		startPropertyListeners();
 
-        final List<ActionI> entryActions = state.getEntryActions();
-        if (entryActions != null && entryActions.size() > 0) {
-            for (final ActionI action : entryActions) {
-                if (action != null) {
-                    action.execute(event);
-                    action.setHasBeenExecuted(true);
-                }
-            }
-        }
+		final List<ActionI> entryActions = state.getEntryActions();
+		if ((entryActions != null) && (entryActions.size() > 0)) {
+			for (final ActionI action : entryActions) {
+				if (action != null) {
+					action.execute(event);
+					action.setHasBeenExecuted(true);
+				}
+			}
+		}
 
-        final List<TransitionI> transitions = state.getTransitions();
-        if (transitions != null) {
-            for (final TransitionI transition : transitions) {
-                if (transition.getEvent() == null) {
-                    final boolean evaluate = evaluate(null, transition);
-                    if (evaluate) {
-                        return transition.getToStateId();
-                    }
+		final List<TransitionI> transitions = state.getTransitions();
+		if (transitions != null) {
+			for (final TransitionI transition : transitions) {
+				if (transition.getEvent() == null) {
+					final boolean evaluate = evaluate(null, transition);
+					if (evaluate) {
+						return transition.getToStateId();
+					}
 
-                }
-            }
-        }
-        return -1;
-    }
+				}
+			}
+		}
+		return -1;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public void exiting() throws JFsmException {
+	/**
+	 * {@inheritDoc}
+	 */
+	public void exiting() throws JFsmException {
 
-        LOGGER.debug("'" + state.getIdentifier() + "': exiting: name = " + state.getName());
+		LOGGER.debug("'" + state.getIdentifier() + "': exiting: name = " + state.getName());
 
-        cancelTimerTasks();
-        cancelPropertyEvents();
+		cancelTimerTasks();
+		cancelPropertyEvents();
 
-        final List<ActionI> exitActions = state.getExitActions();
-        if (exitActions != null && exitActions.size() > 0) {
-            for (final ActionI action : exitActions) {
-                if (action != null) {
-                    action.execute(null);
-                    action.setHasBeenExecuted(true);
-                }
-            }
-        }
-    }
+		final List<ActionI> exitActions = state.getExitActions();
+		if ((exitActions != null) && (exitActions.size() > 0)) {
+			for (final ActionI action : exitActions) {
+				if (action != null) {
+					action.execute(null);
+					action.setHasBeenExecuted(true);
+				}
+			}
+		}
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public void stop() {
-        cancelTimerTasks();
-        cancelPropertyEvents();
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	public void stop() {
+		cancelTimerTasks();
+		cancelPropertyEvents();
+	}
 
-    public StateI getState() {
-        return state;
-    }
+	public StateI getState() {
+		return state;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    public String toString() {
-        return "State: id = " + state.getIdentifier() + ", name = '" + state.getName() + "'";
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return "State: id = " + state.getIdentifier() + ", name = '" + state.getName() + "'";
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    protected void startTimerTasks() {
+	/**
+	 * {@inheritDoc}
+	 */
+	protected void startTimerTasks() {
 
-        LOGGER.debug("'" + state.getName() + "': startTimerTasks: timerEvents = " + state.getTimerEvents());
+		LOGGER.debug("'" + state.getName() + "': startTimerTasks: timerEvents = " + state.getTimerEvents());
 
-        if (state.getTimerEvents() != null) {
+		if (state.getTimerEvents() != null) {
 
-            for (final TimerEvent timerEvent : state.getTimerEvents()) {
-                LOGGER.debug("'" + state.getName() + "': startTimerTasks: starting timer = " + timerEvent);
+			for (final TimerEvent timerEvent : state.getTimerEvents()) {
+				LOGGER.debug("'" + state.getName() + "': startTimerTasks: starting timer = " + timerEvent);
 
-                final JFsmTimerTask timerTask = new JFsmTimerTask(timerEvent);
-                timerTask.setFsm(fsmRef);
-                timerEvent.setTimerTask(timerTask);
+				final JFsmTimerTask timerTask = new JFsmTimerTask(timerEvent);
+				timerTask.setFsm(fsmRef);
+				timerEvent.setTimerTask(timerTask);
 
-            }
-        }
-    }
+			}
+		}
+	}
 
-    private boolean evaluate(final Object event, TransitionI transition) {
-    
-        LOGGER.debug("event = " + (event == null ? "null" : event.getClass().getName()));
-        // Check for event type equality, including null values
-        if (transition.getEvent() == null) {
-            return true;
-        }
-    
-        if (event != null && !event.getClass().getName().equals(transition.getEvent().getType())) {
-            return false;
-        }
-    
-        LOGGER.debug("event type matched = " + event.getClass().getName());
-    
-        if (transition.getGuardCondition() == null) {
-            LOGGER.debug("guard == null");
-            return true;
-        } else {
-            LOGGER.debug("expression: " + transition.getGuardCondition().getExpression());
-            return transition.getGuardCondition().evaluate(event);
-        }
-    
-    }
+	private boolean evaluate(final Object event, TransitionI transition) {
 
-    private void startPropertyListeners() {
+		LOGGER.debug("event = " + (event == null ? "null" : event.getClass().getName()));
+		// Check for event type equality, including null values
+		if (transition.getEvent() == null) {
+			return true;
+		}
 
-        final List<FsmPropertyChangeEvent> propertyEvents = state.getPropertyEvents();
+		if ((event != null) && !event.getClass().getName().equals(transition.getEvent().getType())) {
+			return false;
+		}
 
-        if (propertyEvents != null) {
-            LOGGER.debug("'" + state.getName() + "': startPropertyListeners: propertyEvents = " + propertyEvents);
+		LOGGER.debug("event type matched = " + event.getClass().getName());
 
-            for (final FsmPropertyChangeEvent propertyEvent : propertyEvents) {
-                LOGGER.debug("'" + state.getName() + "': startTimerTasks: starting listener = " + propertyEvent);
-                propertyEvent.setJFsm(this.fsmRef);
-                propertyEvent.start();
+		if (transition.getGuardCondition() == null) {
+			LOGGER.debug("guard == null");
+			return true;
+		} else {
+			LOGGER.debug("expression: " + transition.getGuardCondition().getExpression());
+			return transition.getGuardCondition().evaluate(event);
+		}
 
-            }
-        }
+	}
 
-    }
+	private void startPropertyListeners() {
 
-    private void cancelPropertyEvents() {
+		final List<FsmPropertyChangeEvent> propertyEvents = state.getPropertyEvents();
 
-        if (state.getPropertyEvents() != null) {
+		if (propertyEvents != null) {
+			LOGGER.debug("'" + state.getName() + "': startPropertyListeners: propertyEvents = " + propertyEvents);
 
-            for (final FsmPropertyChangeEvent propertyEvent : state.getPropertyEvents()) {
-                LOGGER.debug("'" + state.getName() + "': cancelPropertyEvents: properety event = " + propertyEvent);
-                propertyEvent.stop();
-            }
+			for (final FsmPropertyChangeEvent propertyEvent : propertyEvents) {
+				LOGGER.debug("'" + state.getName() + "': startTimerTasks: starting listener = " + propertyEvent);
+				propertyEvent.setJFsm(this.fsmRef);
+				propertyEvent.start();
 
-        }
+			}
+		}
 
-    }
+	}
 
-    /**
-     * Cancel timer tasks.
-     */
-    private void cancelTimerTasks() {
+	private void cancelPropertyEvents() {
 
-        final List<TimerEvent> timerEvents = state.getTimerEvents();
-        if (timerEvents != null) {
+		if (state.getPropertyEvents() != null) {
 
-            for (final TimerEvent timerEvent : timerEvents) {
-                LOGGER.debug("'" + state.getName() + "': cancelTimerTasks: timer event = " + timerEvent);
-                timerEvent.getTimerTask().cancel();
-            }
+			for (final FsmPropertyChangeEvent propertyEvent : state.getPropertyEvents()) {
+				LOGGER.debug("'" + state.getName() + "': cancelPropertyEvents: properety event = " + propertyEvent);
+				propertyEvent.stop();
+			}
 
-        }
-    }
+		}
 
-    /**
-     * Search all transitions for the current state and see if it matches (fires) for the submitted event.
-     * 
-     *@param receivedEvent The event that was received
-     *@param transitions a list of transitions to inspect
-     *@return The Transition if it fired, else null
-     */
-    private TransitionI findFieringTransition(final Object receivedEvent, final List<TransitionI> transitions) {
+	}
 
-        LOGGER.debug("'" + state.getIdentifier() + "': findFieringTransition: receivedEvent = "
-                        + receivedEvent.getClass().getName());
+	/**
+	 * Cancel timer tasks.
+	 */
+	private void cancelTimerTasks() {
 
-        if (transitions == null) {
-            return null;
-        }
+		final List<TimerEvent> timerEvents = state.getTimerEvents();
+		if (timerEvents != null) {
 
-        for (final TransitionI transition : transitions) {
+			for (final TimerEvent timerEvent : timerEvents) {
+				LOGGER.debug("'" + state.getName() + "': cancelTimerTasks: timer event = " + timerEvent);
+				timerEvent.getTimerTask().cancel();
+			}
 
-            if (evaluate(receivedEvent, transition)) {
-                LOGGER.debug("'" + state.getIdentifier() + "': findFieringTransition: transition fired= " + transition);
-                return transition;
-            }
-            LOGGER.debug("'" + state.getName() + "': findFieringTransition: transition not fired = " + transition);
-        }
+		}
+	}
 
-        return null;
-    }
+	/**
+	 * Search all transitions for the current state and see if it matches
+	 * (fires) for the submitted event.
+	 * 
+	 * @param receivedEvent The event that was received
+	 * @param transitions a list of transitions to inspect
+	 * @return The Transition if it fired, else null
+	 */
+	private TransitionI findFieringTransition(final Object receivedEvent, final List<TransitionI> transitions) {
+
+		LOGGER.debug("'" + state.getIdentifier() + "': findFieringTransition: receivedEvent = "
+				+ receivedEvent.getClass().getName());
+
+		if (transitions == null) {
+			return null;
+		}
+
+		for (final TransitionI transition : transitions) {
+
+			if (evaluate(receivedEvent, transition)) {
+				LOGGER.debug("'" + state.getIdentifier() + "': findFieringTransition: transition fired= " + transition);
+				return transition;
+			}
+			LOGGER.debug("'" + state.getName() + "': findFieringTransition: transition not fired = " + transition);
+		}
+
+		return null;
+	}
 
 }

@@ -11,18 +11,19 @@ import org.jfsm.core.events.Event;
  */
 public class EventPersistenceDelegate extends DefaultPersistenceDelegate {
 
-    /**
-     * Build an instantiation expression for the Event class.
-     * 
-     *@param oldInstance The old instance of the Event
-     *@param out The encoder
-     *@return The expression for the instantiation
-     */
-    protected Expression instantiate(final Object oldInstance, final Encoder out) {
-        super.instantiate(oldInstance, out);
+	/**
+	 * Build an instantiation expression for the Event class.
+	 * 
+	 * @param oldInstance The old instance of the Event
+	 * @param out The encoder
+	 * @return The expression for the instantiation
+	 */
+	@Override
+	protected Expression instantiate(final Object oldInstance, final Encoder out) {
+		super.instantiate(oldInstance, out);
 
-        return new Expression(oldInstance, oldInstance.getClass(), "new", new Object[] { ((Event) oldInstance)
-                        .getType() });
-    }
+		return new Expression(oldInstance, oldInstance.getClass(), "new",
+				new Object[] { ((Event) oldInstance).getType() });
+	}
 
 }

@@ -15,90 +15,91 @@ import org.jfsm.core.fsm.JFsm;
  */
 public class JFsmTimerTask extends TimerTask {
 
-    private static final Logger LOGGER = Logger.getLogger(JFsmTimerTask.class);
-    
-    private Timer timer;
+	private static final Logger LOGGER = Logger.getLogger(JFsmTimerTask.class);
 
-    private JFsm jFsm;
+	private Timer timer;
 
-    private final TimerEvent timerEvent;
+	private JFsm jFsm;
 
-    /**
-     * Constructor for the JFsmTimerTask object.
-     * 
-     *@param timerEvent The timer event
-     */
-    public JFsmTimerTask(final TimerEvent timerEvent) {
+	private final TimerEvent timerEvent;
 
-        if (timerEvent == null) {
-            throw new IllegalArgumentException("Argument \"timerEvent\" is null");
-        }
+	/**
+	 * Constructor for the JFsmTimerTask object.
+	 * 
+	 * @param timerEvent The timer event
+	 */
+	public JFsmTimerTask(final TimerEvent timerEvent) {
 
-        if (!(timerEvent instanceof After || timerEvent instanceof When)) {
-            throw new IllegalArgumentException("Unknown Timer event = " + timerEvent);
-        }
+		if (timerEvent == null) {
+			throw new IllegalArgumentException("Argument \"timerEvent\" is null");
+		}
 
-        this.timerEvent = timerEvent;
+		if (!((timerEvent instanceof After) || (timerEvent instanceof When))) {
+			throw new IllegalArgumentException("Unknown Timer event = " + timerEvent);
+		}
 
-    }
+		this.timerEvent = timerEvent;
 
-    /**
-     * Sets the JFsm attribute of the JFsmTimerTask object.
-     * 
-     *@param pFsm The new JFsm value
-     */
-    public void setFsm(final JFsm pFsm) {
+	}
 
-        if (pFsm == null) {
-            throw new IllegalArgumentException("Argument 'pFsm' is null");
-        }
+	/**
+	 * Sets the JFsm attribute of the JFsmTimerTask object.
+	 * 
+	 * @param pFsm The new JFsm value
+	 */
+	public void setFsm(final JFsm pFsm) {
 
-        this.jFsm = pFsm;
-    }
+		if (pFsm == null) {
+			throw new IllegalArgumentException("Argument 'pFsm' is null");
+		}
 
-    /**
-     * Schedule the task.
-     */
-    public void start() {
+		this.jFsm = pFsm;
+	}
 
-        if (timer == null) {
-            timer = new Timer();
-        }
+	/**
+	 * Schedule the task.
+	 */
+	public void start() {
 
-        if (timerEvent instanceof After) {
-            final After after = (After) timerEvent;
-            if (after.getRepeat()) {
-                timer.schedule(this, after.getDelay(), after.getDelay());
-            } else {
-                timer.schedule(this, after.getDelay());
-            }
-        } else if (timerEvent instanceof When) {
-            timer.schedule(this, ((When) timerEvent).getTime());
-        }
-    }
+		if (timer == null) {
+			timer = new Timer();
+		}
 
-    /**
-     * Main processing method for the JFsmTimerTask object.
-     */
-    public void run() {
+		if (timerEvent instanceof After) {
+			final After after = (After) timerEvent;
+			if (after.getRepeat()) {
+				timer.schedule(this, after.getDelay(), after.getDelay());
+			} else {
+				timer.schedule(this, after.getDelay());
+			}
+		} else if (timerEvent instanceof When) {
+			timer.schedule(this, ((When) timerEvent).getTime());
+		}
+	}
 
-        try {
-            LOGGER.debug(System.currentTimeMillis() + " TimerTask: input " + timerEvent);
-            jFsm.input(timerEvent);
-        } catch (final JFsmException fsme) {
-            LOGGER.error("Error on input to FSM, exception = ", fsme);
-        }
+	/**
+	 * Main processing method for the JFsmTimerTask object.
+	 */
+	@Override
+	public void run() {
 
-    }
+		try {
+			LOGGER.debug(System.currentTimeMillis() + " TimerTask: input " + timerEvent);
+			jFsm.input(timerEvent);
+		} catch (final JFsmException fsme) {
+			LOGGER.error("Error on input to FSM, exception = ", fsme);
+		}
 
-    /**
-     * Cancel the task.
-     */
-    public void stop() {
-        LOGGER.debug("stop: ");
-        if (timer != null) {
-            this.cancel();
-        }
-    }
+	}
+
+	/**
+	 * Cancel the task.
+	 */
+	public void stop() {
+		LOGGER.debug("stop: ");
+		if (timer != null) {
+			this.cancel();
+		}
+	}
 
 }
