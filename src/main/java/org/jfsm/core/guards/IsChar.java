@@ -12,7 +12,8 @@ public class IsChar extends GuardAdapter {
 	/**
 	 * Constructor for the ButtonSelected object.
 	 * 
-	 * @param pC The character to test for
+	 * @param pC
+	 *            The character to test for
 	 */
 	public IsChar(final char pC) {
 		this.c = pC;
@@ -31,7 +32,8 @@ public class IsChar extends GuardAdapter {
 	/**
 	 * Evaluate the expression.
 	 * 
-	 * @param event the event that was received
+	 * @param event
+	 *            the event that was received
 	 * @return true if the button is deselected
 	 */
 	public boolean evaluate(final Object event) {

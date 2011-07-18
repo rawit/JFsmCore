@@ -11,7 +11,8 @@ public interface FsmEventListener {
 	/**
 	 * The method that delivers FSM events.
 	 * 
-	 * @param event The FSM event
+	 * @param event
+	 *            The FSM event
 	 */
 	public abstract void onEvent(FsmEvent event);
 

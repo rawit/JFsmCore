@@ -39,8 +39,10 @@ public class JFsm {
 	/**
 	 * Constructor for the JFsm object.
 	 * 
-	 * @param fsmModel The JFsm model
-	 * @throws JFsmException If the arguments are invalid
+	 * @param fsmModel
+	 *            The JFsm model
+	 * @throws JFsmException
+	 *             If the arguments are invalid
 	 */
 	public JFsm(final JFsmModelI fsmModel) throws JFsmException {
 		this(null, fsmModel);
@@ -49,9 +51,12 @@ public class JFsm {
 	/**
 	 * Constructor for the JFsm object.
 	 * 
-	 * @param fsmCon The FSM context
-	 * @param fsmModel The JFsm model
-	 * @throws JFsmException If the arguments are invalid
+	 * @param fsmCon
+	 *            The FSM context
+	 * @param fsmModel
+	 *            The JFsm model
+	 * @throws JFsmException
+	 *             If the arguments are invalid
 	 */
 	public JFsm(final Context fsmCon, final JFsmModelI fsmModel) throws JFsmException {
 
@@ -110,7 +115,8 @@ public class JFsm {
 	/**
 	 * Adds a change event listener.
 	 * 
-	 * @param listener The event listener
+	 * @param listener
+	 *            The event listener
 	 */
 	public void addChangeListener(final FsmEventListener listener) {
 
@@ -126,7 +132,8 @@ public class JFsm {
 	/**
 	 * Remove an event listener.
 	 * 
-	 * @param listener The listener to remove
+	 * @param listener
+	 *            The listener to remove
 	 */
 	public void removeChangeListener(final FsmEventListener listener) {
 
@@ -141,8 +148,10 @@ public class JFsm {
 	/**
 	 * Input an event to the state machine.
 	 * 
-	 * @param event The event
-	 * @throws JFsmException If the input event was rejected
+	 * @param event
+	 *            The event
+	 * @throws JFsmException
+	 *             If the input event was rejected
 	 */
 	public synchronized void input(final Object event) throws JFsmException {
 
@@ -185,7 +194,8 @@ public class JFsm {
 	/**
 	 * Start the JFsm.
 	 * 
-	 * @throws JFsmException If the FSM could not be started
+	 * @throws JFsmException
+	 *             If the FSM could not be started
 	 */
 	public synchronized void start() throws JFsmException {
 
@@ -264,8 +274,10 @@ public class JFsm {
 	/**
 	 * Set the context in all states.
 	 * 
-	 * @param fsmContext The new Context value
-	 * @throws JFsmException If resolving the objects failed
+	 * @param fsmContext
+	 *            The new Context value
+	 * @throws JFsmException
+	 *             If resolving the objects failed
 	 */
 	private void setContext(final Context fsmContext) throws JFsmException {
 
@@ -297,7 +309,8 @@ public class JFsm {
 	/**
 	 * Notify all registered event listeners that an event has occurred.
 	 * 
-	 * @param event The event
+	 * @param event
+	 *            The event
 	 */
 	protected void fireFsmEvent(final FsmEvent event) {
 

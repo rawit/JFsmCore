@@ -15,8 +15,10 @@ public class AndGc extends GuardAdapter {
 	/**
 	 * Constructor for the ButtonSelected object.
 	 * 
-	 * @param gc1 first guard condition
-	 * @param gc2 second guard condition
+	 * @param gc1
+	 *            first guard condition
+	 * @param gc2
+	 *            second guard condition
 	 */
 	public AndGc(final GuardConditionI gc1, final GuardConditionI gc2) {
 		this.gc1 = gc1;
@@ -36,7 +38,8 @@ public class AndGc extends GuardAdapter {
 	/**
 	 * Evaluate the expression.
 	 * 
-	 * @param event the event that was received
+	 * @param event
+	 *            the event that was received
 	 * @return true if the button is deselected
 	 */
 	public boolean evaluate(final Object event) {

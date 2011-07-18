@@ -29,8 +29,10 @@ public class FsmState implements FsmStateI, Serializable {
 	/**
 	 * Creates a new state with a given name.
 	 * 
-	 * @param id the identifier
-	 * @param name The name of the state
+	 * @param id
+	 *            the identifier
+	 * @param name
+	 *            The name of the state
 	 */
 	public FsmState(StateI state, final JFsm jFsm) {
 		this.state = state;
@@ -40,10 +42,12 @@ public class FsmState implements FsmStateI, Serializable {
 	/**
 	 * Input an event to the state.
 	 * 
-	 * @param event The input event
+	 * @param event
+	 *            The input event
 	 * @return The next state (this, if no transition took place, or this is an
 	 *         accepting state
-	 * @throws JFsmException If the event cannot be processed
+	 * @throws JFsmException
+	 *             If the event cannot be processed
 	 */
 	public int input(final Object event) throws JFsmException {
 
@@ -244,8 +248,10 @@ public class FsmState implements FsmStateI, Serializable {
 	 * Search all transitions for the current state and see if it matches
 	 * (fires) for the submitted event.
 	 * 
-	 * @param receivedEvent The event that was received
-	 * @param transitions a list of transitions to inspect
+	 * @param receivedEvent
+	 *            The event that was received
+	 * @param transitions
+	 *            a list of transitions to inspect
 	 * @return The Transition if it fired, else null
 	 */
 	private TransitionI findFieringTransition(final Object receivedEvent, final List<TransitionI> transitions) {
