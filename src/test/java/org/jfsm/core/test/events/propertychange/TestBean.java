@@ -3,6 +3,8 @@ package org.jfsm.core.test.events.propertychange;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
+import org.junit.Test;
+
 /**
  * A test bean with a simple field 'x' with set'ers and get'ers and property
  * change support.
@@ -72,5 +74,10 @@ public class TestBean {
 	public int getX() {
 		return x;
 	}
+	
+	@Test
+	public void testDummyMethodForMaven2() {
 
+	}
+	
 }

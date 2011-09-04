@@ -56,7 +56,6 @@ public class After extends TimerEvent {
 	 */
 	@Override
 	public String toString() {
-
 		return JFsmUtilities.removePackagePrefix(this.getType()) + "( " + delay + "(ms) )";
 	}
 
