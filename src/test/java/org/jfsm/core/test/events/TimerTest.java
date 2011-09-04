@@ -61,7 +61,7 @@ public class TimerTest implements FsmEventListener {
 		try {
 			Thread.sleep(WAIT_TIME);
 		} catch (final InterruptedException ite) {
-			Assert.assertTrue(true);
+			Assert.fail();
 		}
 
 		Assert.assertEquals(state3.getIdentifier(), fsm.getCurrentState().getIdentifier());
