@@ -1,27 +1,27 @@
-package org.jfsm.core.test.events;
+package org.jfsm.core.test.events.propertychange;
 
 import java.beans.PropertyChangeEvent;
 
 import org.jfsm.core.GuardAdapter;
 
 /**
- * A guard condition for 'greater than'. The constructor supplies the limit
+ * A guard condition for 'less than'. The constructor supplies the limit
  * value, and the event from the <code>evaluate</code> method is the value to
  * test against.
  * 
  * @author rwe
  * 
  */
-public class IntGt extends GuardAdapter {
+public class IntLt extends GuardAdapter {
 
 	private final int intValue;
 
 	/**
 	 * Constructor.
 	 * 
-	 * @param pIntValue the limit to test for 'greatness'
+	 * @param pIntValue the limit to test for 'less than'
 	 */
-	public IntGt(final int pIntValue) {
+	public IntLt(final int pIntValue) {
 		this.intValue = pIntValue;
 	}
 
@@ -33,7 +33,7 @@ public class IntGt extends GuardAdapter {
 		if (event instanceof PropertyChangeEvent) {
 			final PropertyChangeEvent pce = (PropertyChangeEvent) event;
 			final Integer newInt = (Integer) pce.getNewValue();
-			if (newInt.intValue() > intValue) {
+			if (newInt.intValue() < intValue) {
 				return true;
 			}
 		}
