@@ -6,9 +6,7 @@ import org.jfsm.core.JFsmModel;
 import org.jfsm.core.State;
 import org.jfsm.core.events.After;
 import org.jfsm.core.events.When;
-import org.jfsm.core.fsm.FsmEventListener;
 import org.jfsm.core.fsm.JFsm;
-import org.jfsm.core.fsm.events.FsmEvent;
 import org.junit.Assert;
 import org.junit.Test;
 
