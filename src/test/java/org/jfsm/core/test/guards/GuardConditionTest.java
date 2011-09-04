@@ -8,7 +8,7 @@ import org.jfsm.core.JFsmModel;
 import org.jfsm.core.State;
 import org.jfsm.core.events.Event;
 import org.jfsm.core.fsm.JFsm;
-import org.jfsm.core.guards.IsChar;
+import org.jfsm.core.guards.IsCharGuard;
 import org.junit.Test;
 
 /**
@@ -25,9 +25,9 @@ public class GuardConditionTest {
 		final StateI state2 = new State(2);
 
 		// Create a guard condition that only accepts character 'A'
-		final IsChar isA = new IsChar('A');
+		final IsCharGuard isA = new IsCharGuard('A');
 		// Create a guard condition that only accepts character 'A'
-		final IsChar isB = new IsChar('B');
+		final IsCharGuard isB = new IsCharGuard('B');
 
 		// Create an event that only accepts character input
 		final Event event = new Event(Character.class);

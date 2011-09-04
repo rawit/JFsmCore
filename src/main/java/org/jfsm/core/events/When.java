@@ -42,7 +42,6 @@ public class When extends TimerEvent {
 	 */
 	@Override
 	public String toString() {
-
 		return JFsmUtilities.removePackagePrefix(this.getType()) + "( " + time + " )";
 	}
 

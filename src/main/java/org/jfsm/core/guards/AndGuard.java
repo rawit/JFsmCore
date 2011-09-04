@@ -4,31 +4,29 @@ import org.jfsm.GuardConditionI;
 import org.jfsm.core.GuardAdapter;
 
 /**
- * Adapter for a logical 'and' construct.
+ * Guard for a logical 'and' between two guard conditions.
  */
-public class AndGc extends GuardAdapter {
+public class AndGuard extends GuardAdapter {
 
 	private final GuardConditionI gc1;
 
 	private final GuardConditionI gc2;
 
 	/**
-	 * Constructor for the ButtonSelected object.
+	 * Constructor for the And guard object.
 	 * 
-	 * @param gc1
-	 *            first guard condition
-	 * @param gc2
-	 *            second guard condition
+	 * @param gc1 first guard condition
+	 * @param gc2 second guard condition
 	 */
-	public AndGc(final GuardConditionI gc1, final GuardConditionI gc2) {
+	public AndGuard(final GuardConditionI gc1, final GuardConditionI gc2) {
 		this.gc1 = gc1;
 		this.gc2 = gc2;
 	}
 
 	/**
-	 * Gets the Expression attribute of the ButtonSelected object.
+	 * Gets the logical expression of this guard as a string.
 	 * 
-	 * @return The Expression value
+	 * @return The expression value as a string
 	 */
 	@Override
 	public String getExpression() {
@@ -38,9 +36,8 @@ public class AndGc extends GuardAdapter {
 	/**
 	 * Evaluate the expression.
 	 * 
-	 * @param event
-	 *            the event that was received
-	 * @return true if the button is deselected
+	 * @param event the event that was received
+	 * @return true if the and'ed guards are true
 	 */
 	public boolean evaluate(final Object event) {
 		return gc1.evaluate(event) && gc2.evaluate(event);
