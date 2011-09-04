@@ -1,6 +1,5 @@
 package org.jfsm.core.test.events;
 
-import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
 import org.jfsm.core.JFsmModel;
@@ -17,7 +16,7 @@ import org.junit.Test;
  * change event, <code>FsmPropertyChangeEvent</code> to catch these and input
  * to the FSM. The <code>IntGt</code> guard condition test the changed value and
  * says 'true' when the value greater than 5 has been set using the
- * <code>setX()</code> method.
+ * <code>setX()</code> method and the <code>IntLt</code> does the other way around.
  * 
  * @author rwe
  */
@@ -62,6 +61,8 @@ public class PropertyChangeTest {
 		testBean.setX(6);
 		Assert.assertEquals(state2, jFsm.getCurrentState());
 		testBean.setX(4);
+		Assert.assertEquals(state1, jFsm.getCurrentState());
+		testBean.setX(5);
 		Assert.assertEquals(state1, jFsm.getCurrentState());
 		testBean.setX(8);
 		Assert.assertEquals(state2, jFsm.getCurrentState());
