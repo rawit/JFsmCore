@@ -40,7 +40,15 @@ public interface TransitionI {
 	 */
 	List<ActionI> getActions();
 
-	/**
+    /**
+     * Evaluate the event.
+     * 
+     * @param event The event received
+     * @return true if firing, otherwise false
+     */
+    boolean evaluate(Object event);
+
+    /**
 	 * Gets the "from state" attribute of the TransitionI object.
 	 * 
 	 * @return The "from state" value

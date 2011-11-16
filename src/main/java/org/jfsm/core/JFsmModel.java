@@ -33,7 +33,7 @@ public class JFsmModel implements JFsmModelI {
 	/** The states map. */
 	private Map<Integer, StateI> states = new HashMap<Integer, StateI>();
 
-	private State initial;
+	private State startState;
 
 	/**
 	 * Sets the start state attribute.
@@ -41,7 +41,7 @@ public class JFsmModel implements JFsmModelI {
 	 * @param ts The new start state
 	 */
 	public void setInitial(final StateI ts) {
-		this.initial = (State) ts;
+		this.startState = (State) ts;
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class JFsmModel implements JFsmModelI {
 	 * @return The initial state value
 	 */
 	public StateI getInitial() {
-		return this.initial;
+		return this.startState;
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class JFsmModel implements JFsmModelI {
 
 		this.modelName = model.getName();
 		this.states = model.getStates();
-		this.initial = (State) model.getInitial();
+		this.startState = (State) model.getInitial();
 
 	}
 
@@ -264,7 +264,7 @@ public class JFsmModel implements JFsmModelI {
 		}
 
 		// Checking "to" states
-		if (this.initial == null) {
+		if (this.startState == null) {
 			throw new JFsmException("No initial state.");
 		}
 
@@ -372,5 +372,28 @@ public class JFsmModel implements JFsmModelI {
 
 		return false;
 	}
+
+    /**
+     * Sets the States attribute of the JFsmModel object.
+     * 
+     * @param pStates The new States value
+     */
+    public void setStates(final List<StateI> pStates) {
+        states.clear();
+        for (StateI state: pStates) {
+            states.put(state.getIdentifier(), state);
+        }
+    }
+
+    /**
+     * Sets the start state attribute of the JFsmModel object.
+     * 
+     * @param ts The new start state
+     */
+    public void setStartState(final StateI ts) {
+
+        this.startState = (State) ts;
+
+    }
 
 }

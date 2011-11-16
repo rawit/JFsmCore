@@ -160,6 +160,45 @@ public class Transition implements TransitionI, Serializable {
 		return this.toStateId;
 	}
 
+    /**
+     * Evaluate the event and guard against the received event.
+     * 
+     * @param pEvent The event received
+     * @return true if match, otherwise false
+     */
+    public boolean evaluate(final Object pEvent) {
+
+        // Check for event type equality, including null values
+        if (equals(pEvent, getEvent())) {
+            return false;
+        }
+
+
+        if (getGuardCondition() == null) {
+            return true;
+        } else {
+            return getGuardCondition().evaluate(pEvent);
+        }
+
+    }
+    
+    
+    private boolean equals(final Object event1, final Event event2) {
+        
+        if (event1 == null && event2 != null) {
+            return true;
+        }
+        
+        if (event1 != null && event2 == null) {
+            return true;
+        }
+     
+        final String name = event1.getClass().getName();
+        final String type = event2.getType();
+        return !name.equals(type);
+        
+    }
+
 	/**
 	 * Return a string version of this object.
 	 * 
