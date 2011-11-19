@@ -23,7 +23,7 @@ import org.junit.Test;
  * @author ragnarwestad
  *
  */
-public class FluentTest {
+public class FluentApiTest {
 
     private final class TestAction extends AbstractActionAdapter {
 

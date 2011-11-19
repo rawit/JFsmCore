@@ -11,7 +11,7 @@ import org.junit.Test;
 /**
  * Test code for the Definition class.
  */
-public class DefinitionTest {
+public class JFsmModelTests {
 
 	/**
 	 * Test that the validate method discovers circular empty (epsilon)
@@ -23,7 +23,7 @@ public class DefinitionTest {
 	@Ignore
 	public void testCircularNonEventTransitions() throws JFsmException {
 
-		final JFsmModel fsmDef = new JFsmModel();
+		final JFsmModel fsmModel = new JFsmModel();
 
 		final State state1 = new State(1, "State 1");
 		final State state2 = new State(2, "State 2");
@@ -31,16 +31,16 @@ public class DefinitionTest {
 		state1.addTransition(null, null, null, state2);
 		state2.addTransition(null, null, null, state1);
 
-		fsmDef.addState(state1);
-		fsmDef.addState(state2);
-		fsmDef.setInitial(state1);
+		fsmModel.addState(state1);
+		fsmModel.addState(state2);
+		fsmModel.setInitial(state1);
 		try {
-			fsmDef.validate();
+			fsmModel.validate();
 			Assert.fail("fsmDef.validate() should have thrown JFsmException");
 		} catch (final JFsmException fsme) {
 			Assert.assertTrue(true);
 		}
-		fsmDef.validate();
+		fsmModel.validate();
 	}
 
 	/**
