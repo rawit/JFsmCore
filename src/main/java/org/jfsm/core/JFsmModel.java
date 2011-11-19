@@ -113,6 +113,16 @@ public class JFsmModel implements JFsmModelI {
 		return null;
 	}
 
+	   /**
+     * Returns the state with the indicated id.
+     * 
+     * @param name the state name
+     * @return the state which is labeled by n
+     */
+    public StateI getState(final int stateId) {
+        return states.get(stateId);
+    }
+
 	/**
 	 * Return all transitions in the FSM.
 	 * 

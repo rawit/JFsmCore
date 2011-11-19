@@ -135,13 +135,6 @@ public interface StateI {
 	void addPropertyEvent(FsmPropertyChangeEvent event2);
 
 	/**
-	 * Set the context.
-	 * 
-	 * @param fsmContext The FsmContext value
-	 */
-	void setContext(Context fsmContext);
-
-	/**
 	 * Set the xPos.
 	 * 
 	 * @param xPos the value

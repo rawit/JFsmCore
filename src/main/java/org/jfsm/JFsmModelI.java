@@ -115,4 +115,6 @@ public interface JFsmModelI {
 	 */
 	void setName(String name);
 
+    StateI getState(int i);
+
 }

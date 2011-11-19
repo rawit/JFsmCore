@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.jfsm.Context;
 import org.jfsm.JFsmException;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
@@ -22,8 +21,6 @@ import org.jfsm.core.fsm.events.FsmStarted;
  */
 public class JFsm {
 
-	private final Context fsmContext;
-
 	private final JFsmModelI fsmModel;
 
 	private List<FsmEventListener> eventListeners;
@@ -39,18 +36,6 @@ public class JFsm {
 	/**
 	 * Constructor for the JFsm object.
 	 * 
-	 * @param fsmModel
-	 *            The JFsm model
-	 * @throws JFsmException
-	 *             If the arguments are invalid
-	 */
-	public JFsm(final JFsmModelI fsmModel) throws JFsmException {
-		this(null, fsmModel);
-	}
-
-	/**
-	 * Constructor for the JFsm object.
-	 * 
 	 * @param fsmCon
 	 *            The FSM context
 	 * @param fsmModel
@@ -58,13 +43,12 @@ public class JFsm {
 	 * @throws JFsmException
 	 *             If the arguments are invalid
 	 */
-	public JFsm(final Context fsmCon, final JFsmModelI fsmModel) throws JFsmException {
+	public JFsm(final JFsmModelI fsmModel) throws JFsmException {
 
 		if (fsmModel == null) {
 			throw new IllegalArgumentException("JFsm: No JFsm model");
 		}
 
-		this.fsmContext = fsmCon;
 		this.fsmModel = fsmModel;
 
 		if ((fsmModel.getStates() == null) || fsmModel.getStates().isEmpty()) {
@@ -80,8 +64,6 @@ public class JFsm {
 		if (initial == null) {
 			throw new IllegalArgumentException("JFsm: No initial state in Fsm model");
 		}
-
-		this.setContext(fsmContext);
 
 	}
 
@@ -268,25 +250,6 @@ public class JFsm {
 
 		for (final Integer stateId : states.keySet()) {
 			this.states.put(stateId, new FsmState(states.get(stateId), this));
-		}
-	}
-
-	/**
-	 * Set the context in all states.
-	 * 
-	 * @param fsmContext
-	 *            The new Context value
-	 * @throws JFsmException
-	 *             If resolving the objects failed
-	 */
-	private void setContext(final Context fsmContext) throws JFsmException {
-
-		if (states == null) {
-			return;
-		}
-
-		for (final FsmStateI state : states.values()) {
-			state.getState().setContext(fsmContext);
 		}
 	}
 

@@ -8,9 +8,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.jfsm.ActionI;
-import org.jfsm.Context;
 import org.jfsm.GuardConditionI;
-import org.jfsm.JFsmException;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
 import org.jfsm.core.events.Event;
@@ -127,24 +125,6 @@ public class State implements StateI, Serializable {
 	 */
 	public void setFinal(final boolean flag) {
 		finalState = flag;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setContext(final Context fsmContext) throws JFsmException {
-
-		if (this.internalTransitions != null) {
-			for (final TransitionI trans : internalTransitions) {
-				trans.setContext(fsmContext);
-			}
-		}
-
-		if (this.externalTransitions != null) {
-			for (final TransitionI trans : externalTransitions) {
-				trans.setContext(fsmContext);
-			}
-		}
 	}
 
 	/**

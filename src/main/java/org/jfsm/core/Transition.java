@@ -92,10 +92,8 @@ public class Transition implements TransitionI, Serializable {
 		this.fromState = from;
 		this.event = event;
 		this.guardCondition = guardCond;
-		if (actions != null) {
-			for (final ActionI action : actions) {
-				this.actions.add(action);
-			}
+		for (final ActionI action : actions) {
+		    this.actions.add(action);
 		}
 		this.toStateId = to;
 

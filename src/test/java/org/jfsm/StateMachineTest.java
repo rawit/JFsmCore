@@ -37,7 +37,7 @@ public class StateMachineTest {
 		fsmDef.addState(state2);
 		fsmDef.setInitial(state1);
 
-		final JFsm fsm = new JFsm(null, fsmDef);
+		final JFsm fsm = new JFsm(fsmDef);
 		state1.addTransition(new Event(Object.class, null), new GuardAdapter() {
 			public boolean evaluate(final Object o) {
 				return true;
@@ -78,7 +78,7 @@ public class StateMachineTest {
 		fsmDef.addState(state2);
 		fsmDef.setInitial(state1);
 
-		final JFsm sm = new JFsm(null, fsmDef);
+		final JFsm sm = new JFsm(fsmDef);
 		sm.start();
 		Assert.assertTrue(sm.getCurrentState() == state1);
 		sm.input(new Object());
@@ -104,7 +104,7 @@ public class StateMachineTest {
 		fsmModel.addState(state2);
 		fsmModel.setInitial(state1);
 
-		final JFsm sm = new JFsm(null, fsmModel);
+		final JFsm sm = new JFsm(fsmModel);
 		sm.start();
 		Assert.assertTrue(sm.getCurrentState() == state2);
 
@@ -118,7 +118,7 @@ public class StateMachineTest {
 	@Test
 	public void testEmptyDefinition() throws JFsmException {
 		try {
-			new JFsm(null, new JFsmModel());
+			new JFsm(new JFsmModel());
 			Assert.fail("Should have thrown IllegalArgumentException");
 		} catch (final IllegalArgumentException iae) {
 			Assert.assertTrue(true);
@@ -134,7 +134,7 @@ public class StateMachineTest {
 	public void testContextAndDefinitionNullArg() throws JFsmException {
 
 		try {
-			new JFsm(null, null);
+			new JFsm(null);
 			Assert.fail("StateMachine(null, null) should have thrown FsmException");
 		} catch (final IllegalArgumentException iae) {
 			Assert.assertTrue(true);
