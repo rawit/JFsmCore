@@ -6,7 +6,7 @@ import org.jfsm.core.State;
 import org.jfsm.core.action.CountChars;
 import org.jfsm.core.events.Event;
 import org.jfsm.core.fsm.JFsm;
-import org.jfsm.core.guards.IsCharGuard;
+import org.jfsm.core.guards.IsChar;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -152,9 +152,9 @@ public class StateMachineTest {
 
 		state3.setFinal(true);
 
-		final IsCharGuard isA = new IsCharGuard('A');
-		final IsCharGuard isB = new IsCharGuard('B');
-		final IsCharGuard isC = new IsCharGuard('C');
+		final IsChar isA = new IsChar('A');
+		final IsChar isB = new IsChar('B');
+		final IsChar isC = new IsChar('C');
 		final Event event = new Event(Character.class);
 		final CountChars countChars = new CountChars();
 

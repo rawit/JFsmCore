@@ -6,7 +6,7 @@ import org.jfsm.core.annotations.GuardMethod;
 /**
  * Guard checking for character equality.
  */
-public class IsCharGuard {
+public class IsChar {
 
 	private final char c;
 
@@ -15,7 +15,7 @@ public class IsCharGuard {
 	 * 
 	 * @param pC The character to test for
 	 */
-	public IsCharGuard(final char pChar) {
+	public IsChar(final char pChar) {
 		this.c = pChar;
 	}
 

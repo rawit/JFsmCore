@@ -12,7 +12,7 @@ import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.JFsmModel;
 import org.jfsm.core.action.CountChars;
 import org.jfsm.core.fsm.JFsm;
-import org.jfsm.core.guards.IsCharGuard;
+import org.jfsm.core.guards.IsChar;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -85,16 +85,16 @@ public class FluentApiTest {
     @Ignore("Need more work")
     public void testCharInput() {
 
-        final IsCharGuard isA = new IsCharGuard('A');
-        final IsCharGuard isB = new IsCharGuard('B');
-        final IsCharGuard isC = new IsCharGuard('C');
+        final IsChar isCharA = new IsChar('A');
+        final IsChar isCharB = new IsChar('B');
+        final IsChar isCharC = new IsChar('C');
         final CountChars countChars = new CountChars();
         
-        StateI state1 = when(1).receives(Character.class).andMatches(isA).thenExecute(countChars).andGoTo(2);
-                        when(1).receives(Character.class).andMatches(isC).goTo(3);
+        StateI state1 = when(1).receives(Character.class).andMatches(isCharA).thenExecute(countChars).andGoTo(2);
+                        when(1).receives(Character.class).andMatches(isCharC).goTo(3);
 
-        StateI state2 = when(2).receives(Character.class).andMatches(isB).thenExecute(countChars).andGoTo(1);
-                        when(2).receives(Character.class).andMatches(isC).goTo(3);
+        StateI state2 = when(2).receives(Character.class).andMatches(isCharB).thenExecute(countChars).andGoTo(1);
+                        when(2).receives(Character.class).andMatches(isCharC).goTo(3);
         
         final JFsmModelI fsmModel = new JFsmModel();
         fsmModel.addState(state1);
