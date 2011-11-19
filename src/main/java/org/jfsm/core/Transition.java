@@ -9,6 +9,7 @@ import org.jfsm.GuardConditionI;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
 import org.jfsm.core.events.Event;
+import org.jfsm.core.pojo.PojoActionAdapter;
 import org.jfsm.core.pojo.PojoGuardAdapter;
 
 /**
@@ -49,11 +50,11 @@ public class Transition implements TransitionI, Serializable {
      * 
      * @param from the state the connection starts from
      * @param event The event
-     * @param guardCond The guard condition
-     * @param act the action
+     * @param pGuard The guard condition
+     * @param pAction the action
      * @param to the state the connection goes to
      */
-    public Transition(final StateI from, final Event event, final Object guardCond, final ActionI act, final StateI to) {
+    public Transition(final StateI from, final Event event, final Object pGuard, final Object pAction, final StateI to) {
 
         if (from == null) {
             throw new IllegalArgumentException("Argument \"from\" == null");
@@ -65,14 +66,20 @@ public class Transition implements TransitionI, Serializable {
 
         this.fromState = from;
         this.event = event;
-        if (guardCond != null) {
-            if (guardCond instanceof GuardConditionI) {
-                this.guardCondition = (GuardConditionI) guardCond;
+        if (pGuard != null) {
+            if (pGuard instanceof GuardConditionI) {
+                this.guardCondition = (GuardConditionI) pGuard;
             } else {
-                this.guardCondition = new PojoGuardAdapter(guardCond);
+                this.guardCondition = new PojoGuardAdapter(pGuard);
             }
         }
-        this.actions.add(act);
+        if (pAction != null) {
+            if (pAction instanceof ActionI) {
+                this.actions.add((ActionI) pAction);
+            } else {
+                this.actions.add(new PojoActionAdapter(pAction));
+            }
+        }
         this.toStateId = to.getIdentifier();
 
     }
@@ -86,7 +93,7 @@ public class Transition implements TransitionI, Serializable {
      * @param actions the actions
      * @param to the state the connection goes to
      */
-    public Transition(final StateI from, final Event event, final Object guardCond, final List<ActionI> actions,
+    public Transition(final StateI from, final Event event, final Object guardCond, final List<Object> actions,
             final int to) {
 
         if (from == null) {
@@ -101,8 +108,14 @@ public class Transition implements TransitionI, Serializable {
             } else {
                 this.guardCondition = new PojoGuardAdapter(guardCond);
             }
-            for (final ActionI action : actions) {
-                this.actions.add(action);
+            if (actions != null) {
+                for (final Object action : actions) {
+                    if (action instanceof ActionI) {
+                        this.actions.add((ActionI) action);
+                    } else {
+                        this.actions.add(new PojoActionAdapter(action));
+                    }
+                }
             }
         }
         this.toStateId = to;
