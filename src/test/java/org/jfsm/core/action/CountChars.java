@@ -1,5 +1,6 @@
-package org.jfsm;
+package org.jfsm.core.action;
 
+import org.jfsm.JFsmException;
 import org.jfsm.core.AbstractActionAdapter;
 
 public class CountChars extends AbstractActionAdapter {

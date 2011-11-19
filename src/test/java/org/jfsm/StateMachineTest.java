@@ -3,6 +3,7 @@ package org.jfsm;
 import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.JFsmModel;
 import org.jfsm.core.State;
+import org.jfsm.core.action.CountChars;
 import org.jfsm.core.events.Event;
 import org.jfsm.core.fsm.JFsm;
 import org.jfsm.core.guards.IsCharGuard;

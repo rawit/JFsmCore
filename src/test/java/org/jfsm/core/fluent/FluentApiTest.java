@@ -3,7 +3,6 @@ package org.jfsm.core.fluent;
 import static org.jfsm.core.fluent.FromStateBuilder.when;
 
 import org.jfsm.ActionI;
-import org.jfsm.CountChars;
 import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmException;
 import org.jfsm.JFsmModelI;
@@ -11,6 +10,7 @@ import org.jfsm.StateI;
 import org.jfsm.core.AbstractActionAdapter;
 import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.JFsmModel;
+import org.jfsm.core.action.CountChars;
 import org.jfsm.core.fsm.JFsm;
 import org.jfsm.core.guards.IsCharGuard;
 import org.junit.Assert;
