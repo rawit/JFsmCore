@@ -1,8 +1,8 @@
 package org.jfsm;
 
-import org.jfsm.core.ActionAdapter;
+import org.jfsm.core.AbstractActionAdapter;
 
-public class CountChars extends ActionAdapter {
+public class CountChars extends AbstractActionAdapter {
 
 	int charCount = 0;
 

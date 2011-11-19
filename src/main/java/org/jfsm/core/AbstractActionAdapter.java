@@ -3,11 +3,11 @@ package org.jfsm.core;
 import org.jfsm.ActionI;
 
 /**
- * Adapter for the ActionI interface. Implements all methods with default
+ * Abstract base class for actions. Implements all methods with default
  * handling. Can be sub classed by classes that do not want to implement all
  * methods in the ActionI interface
  */
-public abstract class ActionAdapter implements ActionI {
+public abstract class AbstractActionAdapter implements ActionI {
 
 	/** Set to true after it has been executed. */
 	private boolean hasBeenExecuted = false;
@@ -39,4 +39,6 @@ public abstract class ActionAdapter implements ActionI {
 		return org.jfsm.core.JFsmUtilities.removePackagePrefix(this.getClass().getName());
 	}
 
+    public abstract void execute(Object triggeringEvent);
+    
 }

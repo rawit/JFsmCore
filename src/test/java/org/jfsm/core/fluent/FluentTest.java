@@ -8,8 +8,8 @@ import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmException;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
-import org.jfsm.core.ActionAdapter;
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractActionAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.JFsmModel;
 import org.jfsm.core.fsm.JFsm;
 import org.jfsm.core.guards.IsCharGuard;
@@ -25,14 +25,14 @@ import org.junit.Test;
  */
 public class FluentTest {
 
-    private final class TestAction extends ActionAdapter {
+    private final class TestAction extends AbstractActionAdapter {
 
         public void execute(Object triggeringEvent) {
            System.out.println("Hello from action!");            
         }
     }
 
-    private final class TestGuard extends GuardAdapter {
+    private final class TestGuard extends AbstractGuardAdapter {
 
         public boolean evaluate(Object event) {
             if (event instanceof String) {

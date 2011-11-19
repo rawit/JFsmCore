@@ -20,13 +20,6 @@ public interface TransitionI {
 	GuardConditionI getGuardCondition();
 
 	/**
-	 * Resolve all objects according to submitted Context.
-	 * 
-	 * @param fsmContext The FsmContext value
-	 */
-	void setContext(Context fsmContext);
-
-	/**
 	 * Gets the Event type attribute of the TransitionI object.
 	 * 
 	 * @return The Event value

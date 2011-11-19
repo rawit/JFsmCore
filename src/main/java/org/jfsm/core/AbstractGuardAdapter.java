@@ -1,8 +1,6 @@
 package org.jfsm.core;
 
-import org.jfsm.Context;
 import org.jfsm.GuardConditionI;
-import org.jfsm.JFsmException;
 
 /**
  * Adapter for the GuardConditionI interface. Implements all methods with
@@ -10,7 +8,7 @@ import org.jfsm.JFsmException;
  * all methods in the GuardConditionI interface.
  * 
  */
-public abstract class GuardAdapter implements GuardConditionI {
+public abstract class AbstractGuardAdapter implements GuardConditionI {
 
 	/**
 	 * {@inheritDoc}
@@ -19,11 +17,6 @@ public abstract class GuardAdapter implements GuardConditionI {
 		return org.jfsm.core.JFsmUtilities.removePackagePrefix(this.getClass().getName());
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	public void setContext(final Context fsmContext) throws JFsmException {
-
-	}
+	public abstract boolean evaluate(Object event);
 
 }

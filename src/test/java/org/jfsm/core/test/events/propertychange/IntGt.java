@@ -2,7 +2,7 @@ package org.jfsm.core.test.events.propertychange;
 
 import java.beans.PropertyChangeEvent;
 
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 
 /**
  * A guard condition for 'greater than'. The constructor supplies the limit
@@ -12,7 +12,7 @@ import org.jfsm.core.GuardAdapter;
  * @author rwe
  * 
  */
-public class IntGt extends GuardAdapter {
+public class IntGt extends AbstractGuardAdapter {
 
 	private final int intValue;
 

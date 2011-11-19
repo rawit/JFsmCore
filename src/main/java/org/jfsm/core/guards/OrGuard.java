@@ -1,12 +1,12 @@
 package org.jfsm.core.guards;
 
 import org.jfsm.GuardConditionI;
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 
 /**
  * Guard for a logical 'or' between two guard conditions.
  */
-public class OrGuard extends GuardAdapter {
+public class OrGuard extends AbstractGuardAdapter {
 
 	private final GuardConditionI gc1;
 

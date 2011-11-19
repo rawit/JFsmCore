@@ -3,7 +3,7 @@ package org.jfsm.core.pojo;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import org.jfsm.core.ActionAdapter;
+import org.jfsm.core.AbstractActionAdapter;
 import org.jfsm.core.annotations.ActionMethod;
 
 /**
@@ -12,7 +12,7 @@ import org.jfsm.core.annotations.ActionMethod;
  * @author ragnarwestad
  *
  */
-public class PojoActionAdapter extends ActionAdapter {
+public class PojoActionAdapter extends AbstractActionAdapter {
 
     private Object target;
 

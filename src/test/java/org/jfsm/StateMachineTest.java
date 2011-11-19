@@ -1,6 +1,6 @@
 package org.jfsm;
 
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.JFsmModel;
 import org.jfsm.core.State;
 import org.jfsm.core.events.Event;
@@ -38,14 +38,14 @@ public class StateMachineTest {
 		fsmDef.setInitial(state1);
 
 		final JFsm fsm = new JFsm(fsmDef);
-		state1.addTransition(new Event(Object.class, null), new GuardAdapter() {
+		state1.addTransition(new Event(Object.class, null), new AbstractGuardAdapter() {
 			public boolean evaluate(final Object o) {
 				return true;
 			}
 
 		}, null, state2);
 
-		state2.addTransition(new Event(Object.class, null), new GuardAdapter() {
+		state2.addTransition(new Event(Object.class, null), new AbstractGuardAdapter() {
 			public boolean evaluate(final Object o) {
 				return true;
 			}

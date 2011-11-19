@@ -1,11 +1,11 @@
 package org.jfsm.core.guards;
 
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 
 /**
  * Guard checking for character equality.
  */
-public class IsCharGuard extends GuardAdapter {
+public class IsCharGuard extends AbstractGuardAdapter {
 
 	private final char c;
 

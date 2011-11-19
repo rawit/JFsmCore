@@ -3,10 +3,10 @@ package org.jfsm.core.pojo;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
-import org.jfsm.core.GuardAdapter;
+import org.jfsm.core.AbstractGuardAdapter;
 import org.jfsm.core.annotations.GuardMethod;
 
-public class PojoGuardAdapter extends GuardAdapter {
+public class PojoGuardAdapter extends AbstractGuardAdapter {
 
     private Object target;
 
@@ -59,7 +59,7 @@ public class PojoGuardAdapter extends GuardAdapter {
                 if (!met.getReturnType().equals(Boolean.class) &&
                     !met.getReturnType().equals(boolean.class)) {
                     throw new RuntimeException("Wrong return type for method '" + pMethodName + "'." +
-                    		" Expected Boolean/boolean, but was: '" + met.getReturnType() + "'");                    
+                            " Expected Boolean/boolean, but was: '" + met.getReturnType() + "'");                    
                 }
                 return met;
             }

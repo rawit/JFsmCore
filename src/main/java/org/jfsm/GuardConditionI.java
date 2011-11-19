@@ -8,13 +8,6 @@ package org.jfsm;
 public interface GuardConditionI {
 
 	/**
-	 * Set the context.
-	 * 
-	 * @param fsmContext The FsmContext value
-	 */
-	void setContext(Context fsmContext);
-
-	/**
 	 * Evaluate the guard condition against the submitted event object.
 	 * 
 	 * @param event The event to evaluate

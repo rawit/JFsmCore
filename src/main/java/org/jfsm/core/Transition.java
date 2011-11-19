@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.jfsm.ActionI;
-import org.jfsm.Context;
 import org.jfsm.GuardConditionI;
-import org.jfsm.JFsmException;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
 import org.jfsm.core.events.Event;
@@ -96,20 +94,6 @@ public class Transition implements TransitionI, Serializable {
 		    this.actions.add(action);
 		}
 		this.toStateId = to;
-
-	}
-
-	/**
-	 * Resolve all objects according to submitted Context.
-	 * 
-	 * @param fsmContext The FsmContext value
-	 * @throws JFsmException If some object could not be resolved
-	 */
-	public void setContext(final Context fsmContext) throws JFsmException {
-
-		if (this.getGuardCondition() != null) {
-			this.getGuardCondition().setContext(fsmContext);
-		}
 
 	}
 

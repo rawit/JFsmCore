@@ -49,29 +49,21 @@ public class PojoAdapterTestPropeties {
 
     @Test
     public void testActionAdapter() {
-
         actionAdapter.execute("this is the message");
-
     }
 
     @Test
     public void testGuardAdapter() {
-
         transition = new Transition(state1, new Event(String.class), this.guardAdapter, this.actionAdapter, state2);
-
         Assert.assertTrue(guardAdapter.evaluate(PojoTestGuard.TRUE_MESSAGE));
         Assert.assertFalse(guardAdapter.evaluate("Blabla"));
-
     }
 
     @Test
     public void testTransition() {
-
         transition = new Transition(state1, new Event(String.class), this.guardAdapter, this.actionAdapter, state2);
-
         Assert.assertTrue(transition.evaluate(PojoTestGuard.TRUE_MESSAGE));
         Assert.assertFalse(transition.evaluate("BlahBlah..."));
-
     }
 
     @Test
