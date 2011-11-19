@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.jfsm.ActionI;
-import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
 import org.jfsm.core.JFsmModel;

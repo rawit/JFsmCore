@@ -1,6 +1,5 @@
 package org.jfsm.core.fluent;
 
-import org.jfsm.GuardConditionI;
 import org.jfsm.JFsmModelI;
 import org.jfsm.StateI;
 import org.jfsm.core.events.Event;
