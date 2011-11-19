@@ -18,7 +18,7 @@ public class FsmBuilder {
 
     private StateI fromState;
 
-    private GuardConditionI guard;
+    private Object guard;
 
     private Class<?> eventType;
 
@@ -63,11 +63,11 @@ public class FsmBuilder {
         return this.eventType;
     }
 
-    public void setGuard(GuardConditionI pGuard) {
+    public void setGuard(Object pGuard) {
         this.guard = pGuard;
     }
 
-    public GuardConditionI getGuard() {
+    public Object getGuard() {
         return this.guard;
     }
 

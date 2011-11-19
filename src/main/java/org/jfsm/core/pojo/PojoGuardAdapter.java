@@ -28,6 +28,9 @@ public class PojoGuardAdapter extends AbstractGuardAdapter {
      * @param pMethodName the guard method
      */
     public PojoGuardAdapter(Object pTarget, String pMethodName) {
+        if (pTarget == null) {
+            throw new IllegalArgumentException("Argument 'pTarget' cannot be null.");
+        }
         this.target = pTarget;
         if (pMethodName != null) {
             this.method = findMethod(pTarget, pMethodName);

@@ -193,7 +193,7 @@ public class State implements StateI, Serializable {
 	/**
 	 * {@inheritDoc}
 	 */
-	public void addTransition(final Event event, final GuardConditionI guardCond, final ActionI act,
+	public void addTransition(final Event event, final Object guardCond, final ActionI act,
 			final StateI toState) {
 
 		addTransition(new Transition(this, event, guardCond, act, toState));
@@ -208,7 +208,7 @@ public class State implements StateI, Serializable {
 	 * @param actions The actions
 	 * @param toState The state to transfer to
 	 */
-	public void addTransition(final Event event, final GuardConditionI guardCond, final List<ActionI> actions,
+	public void addTransition(final Event event, final Object guardCond, final List<ActionI> actions,
 			final int toState) {
 
 		addTransition(new Transition(this, event, guardCond, actions, toState));

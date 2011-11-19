@@ -1,11 +1,12 @@
 package org.jfsm.core.guards;
 
-import org.jfsm.core.AbstractGuardAdapter;
+import org.jfsm.core.annotations.GuardMethod;
+
 
 /**
  * Guard checking for character equality.
  */
-public class IsCharGuard extends AbstractGuardAdapter {
+public class IsCharGuard {
 
 	private final char c;
 
@@ -19,21 +20,12 @@ public class IsCharGuard extends AbstractGuardAdapter {
 	}
 
 	/**
-	 * Gets the logical expression of this guard as a string.
-	 * 
-	 * @return The expression value as a string
-	 */
-	@Override
-	public String getExpression() {
-		return String.valueOf(this.c);
-	}
-
-	/**
 	 * Evaluate the expression.
 	 * 
 	 * @param pEvent the event that was received
 	 * @return true if the characters are equal
 	 */
+	@GuardMethod
 	public boolean evaluate(final Object pEvent) {
 
 		if (pEvent instanceof Character) {

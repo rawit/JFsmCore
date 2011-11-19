@@ -25,20 +25,20 @@ public class GuardConditionTest {
 		final StateI state2 = new State(2);
 
 		// Create a guard condition that only accepts character 'A'
-		final IsCharGuard isA = new IsCharGuard('A');
+		final IsCharGuard isCharA = new IsCharGuard('A');
 		// Create a guard condition that only accepts character 'A'
-		final IsCharGuard isB = new IsCharGuard('B');
+		final IsCharGuard isCharB = new IsCharGuard('B');
 
 		// Create an event that only accepts character input
 		final Event event = new Event(Character.class);
 
 		// Add a transition from state 1 to state 2 when a character 'A' is
 		// received
-		state1.addTransition(event, isA, null, state2);
+		state1.addTransition(event, isCharA, null, state2);
 
 		// Add a transition from state 2 to state 1 when a character 'B' is
 		// received
-		state2.addTransition(event, isB, null, state1);
+		state2.addTransition(event, isCharB, null, state1);
 
 		// Create the model and add the states
 		final JFsmModelI jfsmModel = new JFsmModel();

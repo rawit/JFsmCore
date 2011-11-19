@@ -13,7 +13,7 @@ public class GuardBuilder {
         this.fsmBuilder = pFsmBuilder;
     }
 
-    public ActionBuilder andMatches(GuardConditionI pGuard) {
+    public ActionBuilder andMatches(Object pGuard) {
         ActionBuilder actionBuilder = new ActionBuilder(fsmBuilder);
         this.fsmBuilder.setGuard(pGuard);
         return actionBuilder;

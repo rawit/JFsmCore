@@ -1,12 +1,12 @@
 package org.jfsm.core.guards;
 
 import org.jfsm.GuardConditionI;
-import org.jfsm.core.AbstractGuardAdapter;
+import org.jfsm.core.annotations.GuardMethod;
 
 /**
  * Guard for a logical 'and' between two guard conditions.
  */
-public class AndGuard extends AbstractGuardAdapter {
+public class AndGuard {
 
 	private final GuardConditionI gc1;
 
@@ -24,21 +24,12 @@ public class AndGuard extends AbstractGuardAdapter {
 	}
 
 	/**
-	 * Gets the logical expression of this guard as a string.
-	 * 
-	 * @return The expression value as a string
-	 */
-	@Override
-	public String getExpression() {
-		return gc1.getExpression() + " and " + gc2.getExpression();
-	}
-
-	/**
 	 * Evaluate the expression.
 	 * 
 	 * @param event the event that was received
 	 * @return true if the and'ed guards are true
 	 */
+    @GuardMethod
 	public boolean evaluate(final Object event) {
 		return gc1.evaluate(event) && gc2.evaluate(event);
 	}

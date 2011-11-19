@@ -107,7 +107,7 @@ public interface StateI {
 	 * @param actions The actions
 	 * @param toState the 'to' state id
 	 */
-	void addTransition(Event event, GuardConditionI guardCond, List<ActionI> actions, int toState);
+	void addTransition(Event event, Object guardCond, List<ActionI> actions, int toState);
 
 	/**
 	 * Add a new outgoing transition.
@@ -117,7 +117,7 @@ public interface StateI {
 	 * @param act The action
 	 * @param to The state to transit to
 	 */
-	void addTransition(Event event, GuardConditionI guardCond, ActionI act, StateI to);
+	void addTransition(Event event, Object guardCond, ActionI act, StateI to);
 
 	/**
 	 * Get the transitions.
