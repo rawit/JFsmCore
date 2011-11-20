@@ -81,14 +81,14 @@ public interface StateI {
 	 * @param runAtRestart true if the action should be run if the state machine
 	 *        is restartet in this state
 	 */
-	void addEntryAction(final Object act, final boolean runAtRestart);
+	void addEntryAction(final ActionI action, final boolean runAtRestart);
 
 	/**
 	 * Set the exit action for the state.
 	 * 
 	 * @param act action
 	 */
-	void addExitAction(final Object act);
+	void addExitAction(final ActionI act);
 
 	/**
 	 * Add a new internal transition.
@@ -97,7 +97,7 @@ public interface StateI {
 	 * @param guardCond The guard
 	 * @param act The action
 	 */
-	void addInternalTransition(Event event, Object guardCond, Object act);
+	void addInternalTransition(Event event, GuardConditionI guard, ActionI action);
 
 	/**
 	 * Add a new internal transition.
@@ -107,7 +107,7 @@ public interface StateI {
 	 * @param actions The actions
 	 * @param toState the 'to' state id
 	 */
-	void addTransition(Event event, Object guardCond, List<Object> actions, int toState);
+	void addTransition(Event event, GuardConditionI guard, List<ActionI> actions, int toState);
 
 	/**
 	 * Add a new outgoing transition.
@@ -117,7 +117,7 @@ public interface StateI {
 	 * @param act The action
 	 * @param to The state to transit to
 	 */
-	void addTransition(Event event, Object guardCond, Object act, StateI to);
+	void addTransition(Event event, GuardConditionI guard, ActionI action, StateI to);
 
 	/**
 	 * Get the transitions.

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.jfsm.ActionI;
+import org.jfsm.GuardConditionI;
 import org.jfsm.StateI;
 import org.jfsm.TransitionI;
 import org.jfsm.core.events.Event;
@@ -89,22 +90,10 @@ public class State implements StateI, Serializable {
         this.name = String.valueOf(identifier);
     }
 
-    /** {@inheritDoc} */
-    public int getIdentifier() {
-        return this.identifier;
-    }
-
     /**
      * {@inheritDoc}
      */
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addEntryAction(final Object pAction, final boolean runAtRestart) {
+    public void addEntryAction(final ActionI pAction, final boolean runAtRestart) {
         if (pAction == null) {
             throw new IllegalArgumentException("Argument 'pAction' cannot be null");
         }
@@ -120,7 +109,7 @@ public class State implements StateI, Serializable {
      * 
      * @param act action
      */
-    public void addExitAction(final Object pAction) {
+    public void addExitAction(final ActionI pAction) {
         if (pAction == null) {
             throw new IllegalArgumentException("Argument 'pAction' cannot be null");
         }
@@ -129,6 +118,81 @@ public class State implements StateI, Serializable {
         } else {
             this.exitActions.add(new PojoActionAdapter(pAction));
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addInternalTransition(final Event event, final GuardConditionI pGuard, final ActionI pAction) {
+    
+        logger.debug("'" + this.getName() + "': addInternalTransition:  event = " + event + ", gaurd cond = " + pGuard
+                + ", action = " + pAction);
+    
+        final Transition transition = new Transition(this, event, pGuard, pAction, this);
+    
+        if (internalTransitions == null) {
+            internalTransitions = new ArrayList<TransitionI>();
+        }
+    
+        internalTransitions.add(transition);
+    
+        checkForTimerEvent(transition.getEvent());
+        checkForPropertyChangeEvent(transition.getEvent());
+    
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void addTransition(final Event event, final GuardConditionI guard, final ActionI action, final StateI toState) {
+        addTransition(new Transition(this, event, guard, action, toState));
+    }
+
+    /**
+     * Add a new external transition.
+     * 
+     * @param event The event
+     * @param guard The guard condition
+     * @param actions The actions
+     * @param toState The state to transfer to
+     */
+    public void addTransition(final Event event, final GuardConditionI guard, final List<ActionI> actions, final int toState) {
+        addTransition(new Transition(this, event, guard, actions, toState));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public List<TransitionI> getTransitions() {
+        return this.externalTransitions;
+    }
+
+    public void addPropertyEvent(final FsmPropertyChangeEvent event) {
+        this.propertyEvents.add(event);
+    
+    }
+
+    public void addTimerEvent(final TimerEvent event) {
+        this.timerEvents.add(event);
+    }
+
+    /** {@inheritDoc} */
+    public int getIdentifier() {
+        return this.identifier;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -144,13 +208,6 @@ public class State implements StateI, Serializable {
     /**
      * {@inheritDoc}
      */
-    public List<TransitionI> getInternalTransitions() {
-        return internalTransitions;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public boolean isFinal() {
         return finalState;
     }
@@ -158,8 +215,8 @@ public class State implements StateI, Serializable {
     /**
      * {@inheritDoc}
      */
-    public String getName() {
-        return name;
+    public List<TransitionI> getInternalTransitions() {
+        return internalTransitions;
     }
 
     /**
@@ -181,62 +238,6 @@ public class State implements StateI, Serializable {
      */
     public List<ActionI> getExitActions() {
         return this.exitActions;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addInternalTransition(final Event event, final Object pGuard, final Object pAction) {
-
-        logger.debug("'" + this.getName() + "': addInternalTransition:  event = " + event + ", gaurd cond = " + pGuard
-                + ", action = " + pAction);
-
-        final Transition transition = new Transition(this, event, pGuard, pAction, this);
-
-        if (internalTransitions == null) {
-            internalTransitions = new ArrayList<TransitionI>();
-        }
-
-        internalTransitions.add(transition);
-
-        checkForTimerEvent(transition.getEvent());
-        checkForPropertyChangeEvent(transition.getEvent());
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void addTransition(final Event event, final Object guardCond, final Object act, final StateI toState) {
-        addTransition(new Transition(this, event, guardCond, act, toState));
-    }
-
-    /**
-     * Add a new external transition.
-     * 
-     * @param event The event
-     * @param guardCond The guard condition
-     * @param actions The actions
-     * @param toState The state to transfer to
-     */
-    public void addTransition(final Event event, final Object guardCond, final List<Object> actions, final int toState) {
-        addTransition(new Transition(this, event, guardCond, actions, toState));
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public List<TransitionI> getTransitions() {
-        return this.externalTransitions;
-    }
-
-    public void addPropertyEvent(final FsmPropertyChangeEvent event) {
-        this.propertyEvents.add(event);
-
-    }
-
-    public void addTimerEvent(final TimerEvent event) {
-        this.timerEvents.add(event);
     }
 
     public List<FsmPropertyChangeEvent> getPropertyEvents() {

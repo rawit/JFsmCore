@@ -7,6 +7,7 @@ import org.jfsm.core.action.CountChars;
 import org.jfsm.core.events.Event;
 import org.jfsm.core.fsm.JFsm;
 import org.jfsm.core.guards.IsChar;
+import org.jfsm.core.pojo.PojoGuardAdapter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class StateMachineTest {
 	private JFsmModel fsmModel;
 
 	/**
-	 * A unit test for JUnit.
+	 * A unit test for JFsm engine.
 	 * 
 	 * @throws JFsmException Description of Exception
 	 */
@@ -158,11 +159,11 @@ public class StateMachineTest {
 		final Event event = new Event(Character.class);
 		final CountChars countChars = new CountChars();
 
-		state1.addTransition(event, isA, countChars, state2);
-		state1.addTransition(event, isC, null, state3);
+		state1.addTransition(event, new PojoGuardAdapter(isA), countChars, state2);
+		state1.addTransition(event, new PojoGuardAdapter(isC), null, state3);
 
-		state2.addTransition(event, isB, countChars, state1);
-		state2.addTransition(event, isC, null, state3);
+		state2.addTransition(event, new PojoGuardAdapter(isB), countChars, state1);
+		state2.addTransition(event, new PojoGuardAdapter(isC), null, state3);
 
 		final JFsmModel fsmModel = new JFsmModel();
 		fsmModel.addState(state1);

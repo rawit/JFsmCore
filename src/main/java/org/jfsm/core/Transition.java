@@ -54,7 +54,7 @@ public class Transition implements TransitionI, Serializable {
      * @param pAction the action
      * @param to the state the connection goes to
      */
-    public Transition(final StateI from, final Event event, final Object pGuard, final Object pAction, final StateI to) {
+    public Transition(final StateI from, final Event event, final GuardConditionI pGuard, final ActionI pAction, final StateI to) {
 
         if (from == null) {
             throw new IllegalArgumentException("Argument \"from\" == null");
@@ -93,7 +93,7 @@ public class Transition implements TransitionI, Serializable {
      * @param actions the actions
      * @param to the state the connection goes to
      */
-    public Transition(final StateI from, final Event event, final Object guardCond, final List<Object> actions,
+    public Transition(final StateI from, final Event event, final GuardConditionI guardCond, final List<ActionI> actions,
             final int to) {
 
         if (from == null) {

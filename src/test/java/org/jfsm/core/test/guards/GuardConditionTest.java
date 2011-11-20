@@ -9,6 +9,7 @@ import org.jfsm.core.State;
 import org.jfsm.core.events.Event;
 import org.jfsm.core.fsm.JFsm;
 import org.jfsm.core.guards.IsChar;
+import org.jfsm.core.pojo.PojoGuardAdapter;
 import org.junit.Test;
 
 /**
@@ -34,11 +35,11 @@ public class GuardConditionTest {
 
 		// Add a transition from state 1 to state 2 when a character 'A' is
 		// received
-		state1.addTransition(event, isCharA, null, state2);
+		state1.addTransition(event, new PojoGuardAdapter(isCharA), null, state2);
 
 		// Add a transition from state 2 to state 1 when a character 'B' is
 		// received
-		state2.addTransition(event, isCharB, null, state1);
+		state2.addTransition(event, new PojoGuardAdapter(isCharB), null, state1);
 
 		// Create the model and add the states
 		final JFsmModelI jfsmModel = new JFsmModel();
